@@ -1,0 +1,147 @@
+{
+  "version": "2026-06-07",
+  "categories": {
+    "social-media": {
+      "ambient": [
+        {
+          "file": "001_commercial_upbeat.mp3",
+          "duration": 113,
+          "volume": 0.15
+        },
+        {
+          "file": "002_corporate_positive.mp3",
+          "duration": 127,
+          "volume": 0.15
+        },
+        {
+          "file": "003_business_music.mp3",
+          "duration": 152,
+          "volume": 0.15
+        },
+        {
+          "file": "004_advertising.mp3",
+          "duration": 158,
+          "volume": 0.15
+        },
+        {
+          "file": "005_piano_positive.mp3",
+          "duration": 162,
+          "volume": 0.15
+        }
+      ],
+      "upbeat": [
+        {
+          "file": "001_happy_upbeat.mp3",
+          "duration": 153,
+          "volume": 0.15
+        },
+        {
+          "file": "002_fun_positive.mp3",
+          "duration": 157,
+          "volume": 0.15
+        },
+        {
+          "file": "003_happy_melody.mp3",
+          "duration": 124,
+          "volume": 0.15
+        },
+        {
+          "file": "004_happy_times.mp3",
+          "duration": 169,
+          "volume": 0.15
+        },
+        {
+          "file": "005_joyful_track.mp3",
+          "duration": 172,
+          "volume": 0.15
+        }
+      ]
+    },
+    "startup": {
+      "upbeat": [
+        {
+          "file": "001_startup_inspiring.mp3",
+          "duration": 211,
+          "volume": 0.15
+        },
+        {
+          "file": "002_dreams_hope.mp3",
+          "duration": 207,
+          "volume": 0.15
+        },
+        {
+          "file": "003_achievement.mp3",
+          "duration": 132,
+          "volume": 0.15
+        },
+        {
+          "file": "004_piano_inspiring.mp3",
+          "duration": 182,
+          "volume": 0.15
+        },
+        {
+          "file": "005_emotional_journey.mp3",
+          "duration": 235,
+          "volume": 0.15
+        }
+      ]
+    },
+    "tech-corporate": {
+      "ambient": [
+        {
+          "file": "001_powerful.mp3",
+          "duration": 240,
+          "volume": 0.15
+        },
+        {
+          "file": "002_epic_drums.mp3",
+          "duration": 127,
+          "volume": 0.15
+        },
+        {
+          "file": "003_filmscore.mp3",
+          "duration": 199,
+          "volume": 0.15
+        },
+        {
+          "file": "004_emotional_orchestral.mp3",
+          "duration": 257,
+          "volume": 0.15
+        },
+        {
+          "file": "005_epic_adventure.mp3",
+          "duration": 297,
+          "volume": 0.15
+        }
+      ],
+      "upbeat": [
+        {
+          "file": "001_uplifting_piano.mp3",
+          "duration": 135,
+          "volume": 0.15
+        },
+        {
+          "file": "002_inspiring_hope.mp3",
+          "duration": 166,
+          "volume": 0.15
+        },
+        {
+          "file": "003_motivating_track.mp3",
+          "duration": 223,
+          "volume": 0.15
+        },
+        {
+          "file": "004_inspiring_emotional.mp3",
+          "duration": 211,
+          "volume": 0.15
+        },
+        {
+          "file": "005_inspiring_music.mp3",
+          "duration": 128,
+          "volume": 0.15
+        }
+      ]
+    }
+  },
+  "default": "tech-corporate/ambient"
+}

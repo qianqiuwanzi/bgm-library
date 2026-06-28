@@ -98,6 +98,7 @@ def add_bgm(input_video, output_video, bgm_path, volume=0.3, fade_in=2.0, fade_o
     ]
     
     print(f'[INFO] 添加 BGM: {os.path.basename(bgm_path)}')
+    print(f'[INFO] 使用指定 BGM: {bgm_path}')
     print(f'       音量: {volume}, 淡入: {fade_in}s, 淡出: {fade_out}s')
     
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)

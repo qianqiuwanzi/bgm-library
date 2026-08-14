@@ -1,156 +1,158 @@
-# BGM Library - 免版权背景音乐库技能
+# BGM Library - Royalty-Free Background Music Skill
 
-为视频/音频项目添加高质量免版权背景音乐，支持自动混音、音量控制、淡入淡出。
+> [English](README.md) · [中文](README_zh.md)
 
-## 功能特点
+Add high-quality royalty-free background music to your video / audio projects, with auto mixing, volume control, and fade in / out.
 
-- **25首精选BGM**：涵盖5种风格，满足不同场景需求
-- **自动混音**：智能添加背景音乐，保持原音频质量
-- **淡入淡出**：专业的音频过渡效果
-- **免版权**：所有BGM来自Fesliyan Studios，可商用无需署名
-- **易于使用**：简单的命令行接口，快速上手
+## Features
 
-## 风格分类
+- **25 curated BGM tracks**: 5 styles covering different scenarios
+- **Auto mixing**: smartly add background music while preserving original audio quality
+- **Fade in / out**: professional audio transitions
+- **Royalty-free**: all BGM from Fesliyan Studios, free for commercial use, no attribution required
+- **Easy to use**: simple CLI, quick to get started
 
-| 风格 | 情绪 | 适用场景 | 曲目数 |
+## Style Categories
+
+| Style | Mood | Use case | Tracks |
 |------|------|---------|-------|
-| `tech-corporate` | `ambient` | AI工具介绍、科技产品发布会 | 5 |
-| `tech-corporate` | `upbeat` | 产品上线庆祝、功能更新 | 5 |
-| `social-media` | `ambient` | Vlog、生活分享、旅行记录 | 5 |
-| `social-media` | `upbeat` | 挑战视频、好物推荐、趣味实验 | 5 |
-| `startup` | `upbeat` | 创业故事、团队介绍、愿景展望 | 5 |
+| `tech-corporate` | `ambient` | AI tool intros, tech product launches | 5 |
+| `tech-corporate` | `upbeat` | Product launch celebration, feature updates | 5 |
+| `social-media` | `ambient` | Vlogs, life sharing, travel logs | 5 |
+| `social-media` | `upbeat` | Challenge videos, product recs, fun experiments | 5 |
+| `startup` | `upbeat` | Startup stories, team intros, vision | 5 |
 
-## 安装方法
+## Installation
 
-### 方法1：从 .skill 文件安装
+### Method 1: Install from .skill file
 
-1. 下载 `bgm-library.skill` 文件
-2. 运行安装命令：
+1. Download the `bgm-library.skill` file
+2. Run the install command:
    ```bash
    openclaw skill install bgm-library.skill
    ```
 
-### 方法2：从源代码安装
+### Method 2: Install from source
 
-1. 克隆仓库：
+1. Clone the repo:
    ```bash
    git clone https://github.com/qianqiuwanzi/bgm-library.git
    ```
-2. 复制到技能目录：
+2. Copy to the skills directory:
    ```bash
    cp -r bgm-library ~/.qclaw/skills/
    ```
 
-## 使用方法
+## Usage
 
-### 自动添加 BGM（推荐）
+### Auto add BGM (recommended)
 
-使用 `scripts/add_bgm.py` 脚本自动混音：
+Use `scripts/add_bgm.py` for auto mixing:
 
 ```bash
 python scripts/add_bgm.py \
-  --input <输入视频.mp4> \
-  --output <输出视频.mp4> \
-  --style <风格> \
-  --mood <情绪>
+  --input <input_video.mp4> \
+  --output <output_video.mp4> \
+  --style <style> \
+  --mood <mood>
 ```
 
-**参数说明**：
-- `--input`: 输入视频路径（必需）
-- `--output`: 输出视频路径（必需）
-- `--style`: 风格类别（可选，默认 `tech-corporate`）
-  - `tech-corporate`: 科技/商务
-  - `social-media`: 自媒体/生活
-  - `startup`: 创业/梦想
-- `--mood`: 情绪类型（可选，默认 `ambient`）
-  - `ambient`: 环境感（沉稳、背景）
-  - `upbeat`: 活力感（轻快、激励）
-- `--volume`: BGM 音量（可选，默认 `0.15`，范围 0.0-1.0）
-- `--fade-in`: 淡入时长秒数（可选，默认 `2.0`）
-- `--fade-out`: 淡出时长秒数（可选，默认 `3.0`）
+**Parameters**:
+- `--input`: input video path (required)
+- `--output`: output video path (required)
+- `--style`: style category (optional, default `tech-corporate`)
+  - `tech-corporate`: tech / business
+  - `social-media`: social / life
+  - `startup`: startup / dream
+- `--mood`: mood type (optional, default `ambient`)
+  - `ambient`: ambient (calm, background)
+  - `upbeat`: energetic (lively, motivating)
+- `--volume`: BGM volume (optional, default `0.15`, range 0.0-1.0)
+- `--fade-in`: fade-in seconds (optional, default `2.0`)
+- `--fade-out`: fade-out seconds (optional, default `3.0`)
 
-**示例**：
+**Examples**:
 ```bash
-# 科技商务风格，环境感
+# Tech & business, ambient
 python scripts/add_bgm.py --input video.mp4 --output video_bgm.mp4 --style tech-corporate --mood ambient
 
-# 自媒体生活风格，活力感
+# Social & life, upbeat
 python scripts/add_bgm.py --input vlog.mp4 --output vlog_bgm.mp4 --style social-media --mood upbeat
 ```
 
-### 手动混音（FFmpeg 命令）
+### Manual mixing (FFmpeg)
 
-如果需要更精细控制，可直接用 FFmpeg：
+For finer control, use FFmpeg directly:
 
 ```bash
 ffmpeg -y \
-  -i <输入视频.mp4> \
-  -i <BGM文件.mp3> \
-  -filter_complex "[1:a]volume=0.15,afade=type=in:st=0:d=2,afade=type=out:st=<视频时长-3>:d=3[BGM];[0:a][BGM]amix=inputs=2:duration=first:normalize=0[mixed]" \
+  -i <input_video.mp4> \
+  -i <BGM_file.mp3> \
+  -filter_complex "[1:a]volume=0.15,afade=type=in:st=0:d=2,afade=type=out:st=<video_duration-3>:d=3[BGM];[0:a][BGM]amix=inputs=2:duration=first:normalize=0[mixed]" \
   -map 0:v -map [mixed] \
   -c:v copy -c:a aac -b:a 192k \
-  <输出视频.mp4>
+  <output_video.mp4>
 ```
 
-## 添加新 BGM
+## Add New BGM
 
-### 1. 下载新曲目
+### 1. Download new tracks
 
-从以下平台下载免版权 BGM：
+Download royalty-free BGM from:
 - **Fesliyan Studios**: https://www.fesliyanstudios.com/
 - **Pixabay Music**: https://pixabay.com/music/
 - **YouTube Audio Library**: https://www.youtube.com/audiolibrary
 
-### 2. 放入对应目录
+### 2. Place in the right directory
 
-将下载的 MP3 文件放入 `assets/music-library/<风格>/<情绪>/` 目录。
+Put the downloaded MP3 into `assets/music-library/<style>/<mood>/`.
 
-### 3. 更新清单
+### 3. Update the manifest
 
-运行 `scripts/gen_bgm.py` 更新 `assets/bgm_manifest.json`：
+Run `scripts/gen_bgm.py` to update `assets/bgm_manifest.json`:
 
 ```bash
 python scripts/gen_bgm.py --scan assets/music-library --output assets/bgm_manifest.json
 ```
 
-## 依赖要求
+## Dependencies
 
 - Python 3.6+
-- FFmpeg（需在 PATH 中）
+- FFmpeg (must be in PATH)
 
-## 注意事项
+## Notes
 
-1. **BGM 音量**：默认 0.15（15%），可根据需要调整。建议范围：0.10-0.20
-2. **淡入淡出**：默认淡入 2s、淡出 3s。可根据视频节奏调整
-3. **两段式混音**：先混合所有音轨，再添加 BGM。避免 TTS 音量被稀释
-4. **素材版权**：仅使用 `assets/music-library/` 中的素材，或确保下载的素材是免版权的
+1. **BGM volume**: default 0.15 (15%), adjustable. Suggested range: 0.10-0.20
+2. **Fade in / out**: default fade-in 2s, fade-out 3s. Adjust to video rhythm
+3. **Two-stage mixing**: mix all tracks first, then add BGM, to avoid diluting TTS volume
+4. **Asset license**: only use assets in `assets/music-library/`, or ensure downloaded assets are royalty-free
 
-## 故障排除
+## Troubleshooting
 
-### BGM 未添加
+### BGM not added
 
-- 检查 `assets/music-library/` 目录是否存在
-- 检查 `assets/bgm_manifest.json` 是否存在
-- 运行 `python scripts/gen_bgm.py` 重新生成清单
+- Check `assets/music-library/` exists
+- Check `assets/bgm_manifest.json` exists
+- Run `python scripts/gen_bgm.py` to regenerate the manifest
 
-### 混音后无音频
+### No audio after mixing
 
-- 检查输入视频是否有音频轨道（`ffprobe <视频.mp4>`）
-- 检查 BGM 文件是否有效（`ffprobe <bgm.mp3>`）
+- Check the input video has an audio track (`ffprobe <video.mp4>`)
+- Check the BGM file is valid (`ffprobe <bgm.mp3>`)
 
-### 音量不平衡
+### Volume imbalance
 
-- 调整 `--volume` 参数（降低 BGM 音量，或提升 TTS 音量）
-- 使用 FFmpeg 手动调整（`volume` 滤镜）
+- Adjust `--volume` (lower BGM, or raise TTS volume)
+- Use FFmpeg manually (`volume` filter)
 
-## 许可证
+## License
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
-## 贡献
+## Contributing
 
-欢迎贡献！请随时提交 Pull Request。
+Contributions welcome! Feel free to open a Pull Request.
 
-## 支持
+## Support
 
-如果您遇到任何问题或有建议，请打开一个 issue。
+If you have any issues or suggestions, please open an issue.
